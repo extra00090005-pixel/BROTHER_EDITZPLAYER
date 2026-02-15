@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brother_editz05 | Music Player</title>
+    <style>
+        /* CSS: Basic Reset aur Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; 
+        }
+
+        /* Motion Background Video Setup */
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; 
+            object-fit: cover;
+            filter: brightness(0.6); 
+        }
+
+        /* Glassmorphism Login Card */
+        .login-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            width: 350px;
+        }
+
+        .login-card h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .login-card p {
+            font-size: 14px;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        /* Custom Login Button */
+        #login-btn {
+            background-color: #1DB954; /* Spotify Green */
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(29, 185, 84, 0.4);
+        }
+
+        #login-btn:hover {
+            background-color: #1ed760;
+            transform: scale(1.05); 
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop id="bg-video">
+        <source src="https://cdn.pixabay.com/video/2020/05/25/40140-424855427_large.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div class="login-card">
+        <h1>Brother_editz05</h1>
+        <p>Premium Music Experience</p>
+        <button id="login-btn">Login with Spotify</button>
+    </div>
+
+    <script>
+        // 🚨 Tumhari Client ID yahan add ho gayi hai (Plug & Play)
+        const CLIENT_ID = '32809b2181534b4697d997bad1812a0d'; 
+        
+        // Ye link wahi hona chahiye jo tumne dashboard me add kiya hai (Local testing ke liye)
+        const REDIRECT_URI = 'http://127.0.0.1:5500/player.html'; 
+        
+        const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+        const RESPONSE_TYPE = "token"; 
+        
+        // Ye permissions hain jo user ko accept karni padengi
+        const SCOPES = [
+            "streaming",
+            "user-read-email",
+            "user-read-private",
+            "user-library-read",
+            "playlist-read-private",
+            "user-modify-playback-state"
+        ];
+
+        // Login Button Click Event
+        document.getElementById('login-btn').addEventListener('click', () => {
+            // User ko Spotify ke login page par bhej rahe hain
+            window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES.join("%20")}&response_type=${RESPONSE_TYPE}&show_dialog=true`;
+        });
+    </script>
+
+</body>
+</html>

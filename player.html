@@ -101,7 +101,7 @@
                 console.log('Ready with Device ID', device_id);
                 myDeviceId = device_id;
 
-                // 🚨 YAHAN ASLI SPOTIFY API LINK HAI
+                // 🔥 YAHAN ASLI SPOTIFY DEVICE CONNECT LINK HAI
                 fetch('https://api.spotify.com/v1/me/player', {
                     method: 'PUT',
                     headers: { 'Authorization': `Bearer ${_token}`, 'Content-Type': 'application/json' },
@@ -146,7 +146,7 @@
             }
         }, 1000); 
 
-        // 🚨 YAHAN BHI ASLI SPOTIFY SEARCH AUR PLAY LINKS DAAL DIYE HAIN
+        // 🔥 YAHAN ASLI SPOTIFY SEARCH AUR PLAY LINKS HAIN
         document.getElementById('search-btn').onclick = async () => {
             const query = document.getElementById('search-input').value;
             if(!query) return alert("Pehle gaane ka naam likho!");
